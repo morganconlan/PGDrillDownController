@@ -11,8 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
 
-static char * const kSGBTabBarControllerKVOObserversKey = "kSGBTabBarControllerKVOObserversKey";
-static NSString * const kSGBTabBarControllerSelectedViewControllerKeyPath = @"self.kvoObservedTabBarController.selectedViewController";
+static char * const kPGTabBarControllerKVOObserversKey = "kPGTabBarControllerKVOObserversKey";
+static NSString * const kPGTabBarControllerSelectedViewControllerKeyPath = @"self.kvoObservedTabBarController.selectedViewController";
 
 #define ON_LEGACY_UI ([[[UIDevice currentDevice] systemVersion] integerValue] < 7)
 
@@ -363,9 +363,9 @@ static NSString * const kStateRestorationHadRestorableRightViewControllerKey = @
     {
         NSLog(@"%p de-observing %p", (id)self, (id)self.kvoObservedTabBarController);
         
-        [self removeObserver:self forKeyPath:kSGBTabBarControllerSelectedViewControllerKeyPath context:nil];
+        [self removeObserver:self forKeyPath:kPGTabBarControllerSelectedViewControllerKeyPath context:nil];
         
-        NSMutableDictionary *kvoObservers = objc_getAssociatedObject(self.kvoObservedTabBarController, kSGBTabBarControllerKVOObserversKey);
+        NSMutableDictionary *kvoObservers = objc_getAssociatedObject(self.kvoObservedTabBarController, kPGTabBarControllerKVOObserversKey);
         kvoObservers[self.kvoObserverUUID] = nil;
         
         self.kvoObservedTabBarController = nil;
@@ -384,21 +384,21 @@ static NSString * const kStateRestorationHadRestorableRightViewControllerKey = @
         PGDrillDownContainerAssociatedObject *associatedObject = [[PGDrillDownContainerAssociatedObject alloc] init];
         associatedObject.drillDownController = self;
         
-        NSMutableDictionary *kvoObservers = objc_getAssociatedObject(self.kvoObservedTabBarController, kSGBTabBarControllerKVOObserversKey);
+        NSMutableDictionary *kvoObservers = objc_getAssociatedObject(self.kvoObservedTabBarController, kPGTabBarControllerKVOObserversKey);
         if (!kvoObservers)
         {
             kvoObservers = [NSMutableDictionary dictionary];
-            objc_setAssociatedObject(self.kvoObservedTabBarController, kSGBTabBarControllerKVOObserversKey, kvoObservers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self.kvoObservedTabBarController, kPGTabBarControllerKVOObserversKey, kvoObservers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         kvoObservers[self.kvoObserverUUID] = associatedObject;
         
-        [self addObserver:self forKeyPath:kSGBTabBarControllerSelectedViewControllerKeyPath options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+        [self addObserver:self forKeyPath:kPGTabBarControllerSelectedViewControllerKeyPath options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if ([keyPath isEqual:kSGBTabBarControllerSelectedViewControllerKeyPath] && [change[@"old"] isEqual:change[@"new"]] && [change[@"new"] isEqual:self])
+    if ([keyPath isEqual:kPGTabBarControllerSelectedViewControllerKeyPath] && [change[@"old"] isEqual:change[@"new"]] && [change[@"new"] isEqual:self])
     {
         [self popToRootViewControllerAnimated:YES completion:nil];
     }
