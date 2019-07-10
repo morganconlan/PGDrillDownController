@@ -1,26 +1,26 @@
 //
-//  SGBDrillDownContainerView.m
-//  SGBDrillDownControllerDemo
+//  PGDrillDownContainerView.m
+//  PGDrillDownControllerDemo
 //
 //  Created by Simon Booth on 11/04/2013.
 //  Copyright (c) 2013 Simon Booth. All rights reserved.
 //
 
-#import "SGBDrillDownContainerView.h"
+#import "PGDrillDownContainerView.h"
 
 #define ON_LEGACY_UI ([[[UIDevice currentDevice] systemVersion] integerValue] < 7)
 
-static const CGFloat kSGBDrillDownContainerTransitionShadowRadius = 5.0;
+static const CGFloat kPGDrillDownContainerTransitionShadowRadius = 5.0;
 
-@interface SGBDrillDownContainerView ()
+@interface PGDrillDownContainerView ()
 
 @property (weak, nonatomic) UIImageView *shadowView;
 @property (weak, nonatomic) UIView *fadingView;
-@property (assign, nonatomic) SGBDrillDownContainerShadow shadowPosition;
+@property (assign, nonatomic) PGDrillDownContainerShadow shadowPosition;
 
 @end
 
-@implementation SGBDrillDownContainerView
+@implementation PGDrillDownContainerView
 
 @synthesize borderBackgroundColor=_borderBackgroundColor;
 
@@ -93,7 +93,7 @@ static const CGFloat kSGBDrillDownContainerTransitionShadowRadius = 5.0;
     self.rightBorderView.backgroundColor = borderBackgroundColor;
 }
 
-- (UIImage *)shadowImageForPosition:(SGBDrillDownContainerShadow)position
+- (UIImage *)shadowImageForPosition:(PGDrillDownContainerShadow)position
 {
     static UIImage *shadowImageBoth;
     static UIImage *shadowImageLeft;
@@ -102,22 +102,22 @@ static const CGFloat kSGBDrillDownContainerTransitionShadowRadius = 5.0;
     UIImage * __strong *shadowImageRef = nil;
     switch (position)
     {
-        case SGBDrillDownContainerShadowNone:
+        case PGDrillDownContainerShadowNone:
             return nil;
-        case SGBDrillDownContainerShadowBoth:
+        case PGDrillDownContainerShadowBoth:
             shadowImageRef = &shadowImageBoth;
             break;
-        case SGBDrillDownContainerShadowLeft:
+        case PGDrillDownContainerShadowLeft:
             shadowImageRef = &shadowImageLeft;
             break;
-        case SGBDrillDownContainerShadowRight:
+        case PGDrillDownContainerShadowRight:
             shadowImageRef = &shadowImageRight;
             break;
     }
 
     if (!(*shadowImageRef))
     {
-        UIGraphicsBeginImageContext(CGSizeMake(1.0 + (kSGBDrillDownContainerTransitionShadowRadius * 2.0), 1.0));
+        UIGraphicsBeginImageContext(CGSizeMake(1.0 + (kPGDrillDownContainerTransitionShadowRadius * 2.0), 1.0));
         CGContextRef c = UIGraphicsGetCurrentContext();
 
         CGFloat locations[2] = {0.0, 1.0};
@@ -128,17 +128,17 @@ static const CGFloat kSGBDrillDownContainerTransitionShadowRadius = 5.0;
 
         switch (position)
         {
-            case SGBDrillDownContainerShadowNone:
+            case PGDrillDownContainerShadowNone:
                 break;
-            case SGBDrillDownContainerShadowBoth:
-                CGContextDrawLinearGradient(c, gradient, CGPointMake(0.0, 0.0), CGPointMake(kSGBDrillDownContainerTransitionShadowRadius, 0.0), 0);
-                CGContextDrawLinearGradient(c, gradient, CGPointMake(1.0 + 2.0 * kSGBDrillDownContainerTransitionShadowRadius, 0.0), CGPointMake(kSGBDrillDownContainerTransitionShadowRadius + 1.0, 0.0), 0);
+            case PGDrillDownContainerShadowBoth:
+                CGContextDrawLinearGradient(c, gradient, CGPointMake(0.0, 0.0), CGPointMake(kPGDrillDownContainerTransitionShadowRadius, 0.0), 0);
+                CGContextDrawLinearGradient(c, gradient, CGPointMake(1.0 + 2.0 * kPGDrillDownContainerTransitionShadowRadius, 0.0), CGPointMake(kPGDrillDownContainerTransitionShadowRadius + 1.0, 0.0), 0);
                 break;
-            case SGBDrillDownContainerShadowLeft:
-                CGContextDrawLinearGradient(c, gradient, CGPointMake(0.0, 0.0), CGPointMake(kSGBDrillDownContainerTransitionShadowRadius, 0.0), 0);
+            case PGDrillDownContainerShadowLeft:
+                CGContextDrawLinearGradient(c, gradient, CGPointMake(0.0, 0.0), CGPointMake(kPGDrillDownContainerTransitionShadowRadius, 0.0), 0);
                 break;
-            case SGBDrillDownContainerShadowRight:
-                CGContextDrawLinearGradient(c, gradient, CGPointMake(1.0 + 2.0 * kSGBDrillDownContainerTransitionShadowRadius, 0.0), CGPointMake(kSGBDrillDownContainerTransitionShadowRadius + 1.0, 0.0), 0);
+            case PGDrillDownContainerShadowRight:
+                CGContextDrawLinearGradient(c, gradient, CGPointMake(1.0 + 2.0 * kPGDrillDownContainerTransitionShadowRadius, 0.0), CGPointMake(kPGDrillDownContainerTransitionShadowRadius + 1.0, 0.0), 0);
                 break;
         }
 
@@ -148,17 +148,17 @@ static const CGFloat kSGBDrillDownContainerTransitionShadowRadius = 5.0;
         CGGradientRelease(gradient);
         CGColorSpaceRelease(colorspace);
 
-        *shadowImageRef = [image resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, kSGBDrillDownContainerTransitionShadowRadius, 1.0, kSGBDrillDownContainerTransitionShadowRadius)];
+        *shadowImageRef = [image resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, kPGDrillDownContainerTransitionShadowRadius, 1.0, kPGDrillDownContainerTransitionShadowRadius)];
     }
     return *shadowImageRef;
 }
 
-- (void)addShadowViewAtPosition:(SGBDrillDownContainerShadow)position;
+- (void)addShadowViewAtPosition:(PGDrillDownContainerShadow)position;
 {
 
     if (!self.shadowView)
     {
-        UIImageView *shadowView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, -kSGBDrillDownContainerTransitionShadowRadius, 0.0)];
+        UIImageView *shadowView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, -kPGDrillDownContainerTransitionShadowRadius, 0.0)];
         shadowView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         self.shadowView = shadowView;
         [self addSubview:shadowView];
@@ -174,7 +174,7 @@ static const CGFloat kSGBDrillDownContainerTransitionShadowRadius = 5.0;
 {
     [self.shadowView removeFromSuperview];
     self.shadowView = nil;
-    self.shadowPosition = SGBDrillDownContainerShadowNone;
+    self.shadowPosition = PGDrillDownContainerShadowNone;
 }
 
 - (void)setShadowViewAlpha:(CGFloat)alpha
@@ -207,13 +207,13 @@ static const CGFloat kSGBDrillDownContainerTransitionShadowRadius = 5.0;
 
 @end
 
-@implementation UIView (SGBDrillDownContainerView)
+@implementation UIView (PGDrillDownContainerView)
 
-- (SGBDrillDownContainerView *)drillDownContainerView
+- (PGDrillDownContainerView *)drillDownContainerView
 {
     for (UIView *view = self.superview; view; view = view.superview)
     {
-        if ([view isKindOfClass:[SGBDrillDownContainerView class]]) return (SGBDrillDownContainerView *)view;
+        if ([view isKindOfClass:[PGDrillDownContainerView class]]) return (PGDrillDownContainerView *)view;
     }
     
     return nil;

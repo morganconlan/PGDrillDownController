@@ -1,6 +1,6 @@
 //
-//  SGBDrillDownContainerView.h
-//  SGBDrillDownControllerDemo
+//  PGDrillDownContainerView.h
+//  PGDrillDownControllerDemo
 //
 //  Created by Simon Booth on 11/04/2013.
 //  Copyright (c) 2013 Simon Booth. All rights reserved.
@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, SGBDrillDownContainerShadow)
+typedef NS_ENUM(NSUInteger, PGDrillDownContainerShadow)
 {
-    SGBDrillDownContainerShadowNone=0,
-    SGBDrillDownContainerShadowBoth,
-    SGBDrillDownContainerShadowLeft,
-    SGBDrillDownContainerShadowRight,
+    PGDrillDownContainerShadowNone=0,
+    PGDrillDownContainerShadowBoth,
+    PGDrillDownContainerShadowLeft,
+    PGDrillDownContainerShadowRight,
 };
 
-@interface SGBDrillDownContainerView : UIView
+@interface PGDrillDownContainerView : UIView
 
 @property (nonatomic, strong) UIColor *borderBackgroundColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong, readonly) UIView *leftBorderView;
@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, SGBDrillDownContainerShadow)
 
 - (void)addViewToContentView:(UIView *)view;
 
-- (void)addShadowViewAtPosition:(SGBDrillDownContainerShadow)position;
+- (void)addShadowViewAtPosition:(PGDrillDownContainerShadow)position;
 - (void)removeShadowView;
 - (void)setShadowViewAlpha:(CGFloat)alpha;
 
@@ -35,8 +35,8 @@ typedef NS_ENUM(NSUInteger, SGBDrillDownContainerShadow)
 
 @end
 
-@interface UIView (SGBDrillDownContainerView)
+@interface UIView (PGDrillDownContainerView)
 
-@property (nonatomic, strong, readonly) SGBDrillDownContainerView *drillDownContainerView;
+@property (nonatomic, strong, readonly) PGDrillDownContainerView *drillDownContainerView;
 
 @end
