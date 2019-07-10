@@ -10,6 +10,10 @@
 		011A4B1922D5CFA900D767E6 /* PGDrillDownController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011A4B0F22D5CFA900D767E6 /* PGDrillDownController.framework */; };
 		011A4B1E22D5CFA900D767E6 /* PGDrillDownControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A4B1D22D5CFA900D767E6 /* PGDrillDownControllerTests.m */; };
 		011A4B2022D5CFA900D767E6 /* PGDrillDownController.h in Headers */ = {isa = PBXBuildFile; fileRef = 011A4B1222D5CFA900D767E6 /* PGDrillDownController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		011A4B2D22D5CFC800D767E6 /* SGBDrillDownController.h in Headers */ = {isa = PBXBuildFile; fileRef = 011A4B2922D5CFC400D767E6 /* SGBDrillDownController.h */; };
+		011A4B2E22D5CFC800D767E6 /* SGBDrillDownController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A4B2A22D5CFC700D767E6 /* SGBDrillDownController.m */; };
+		011A4B2F22D5CFC800D767E6 /* SGBDrillDownContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A4B2B22D5CFC700D767E6 /* SGBDrillDownContainerView.m */; };
+		011A4B3022D5CFC800D767E6 /* SGBDrillDownContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 011A4B2C22D5CFC800D767E6 /* SGBDrillDownContainerView.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +33,10 @@
 		011A4B1822D5CFA900D767E6 /* PGDrillDownControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PGDrillDownControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		011A4B1D22D5CFA900D767E6 /* PGDrillDownControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGDrillDownControllerTests.m; sourceTree = "<group>"; };
 		011A4B1F22D5CFA900D767E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		011A4B2922D5CFC400D767E6 /* SGBDrillDownController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBDrillDownController.h; sourceTree = "<group>"; };
+		011A4B2A22D5CFC700D767E6 /* SGBDrillDownController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBDrillDownController.m; sourceTree = "<group>"; };
+		011A4B2B22D5CFC700D767E6 /* SGBDrillDownContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBDrillDownContainerView.m; sourceTree = "<group>"; };
+		011A4B2C22D5CFC800D767E6 /* SGBDrillDownContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBDrillDownContainerView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,10 @@
 		011A4B1122D5CFA900D767E6 /* PGDrillDownController */ = {
 			isa = PBXGroup;
 			children = (
+				011A4B2C22D5CFC800D767E6 /* SGBDrillDownContainerView.h */,
+				011A4B2B22D5CFC700D767E6 /* SGBDrillDownContainerView.m */,
+				011A4B2922D5CFC400D767E6 /* SGBDrillDownController.h */,
+				011A4B2A22D5CFC700D767E6 /* SGBDrillDownController.m */,
 				011A4B1222D5CFA900D767E6 /* PGDrillDownController.h */,
 				011A4B1322D5CFA900D767E6 /* Info.plist */,
 			);
@@ -94,6 +106,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				011A4B2022D5CFA900D767E6 /* PGDrillDownController.h in Headers */,
+				011A4B2D22D5CFC800D767E6 /* SGBDrillDownController.h in Headers */,
+				011A4B3022D5CFC800D767E6 /* SGBDrillDownContainerView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +207,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011A4B2E22D5CFC800D767E6 /* SGBDrillDownController.m in Sources */,
+				011A4B2F22D5CFC800D767E6 /* SGBDrillDownContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
